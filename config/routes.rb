@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  root to: 'static#index'
 
   resources :root
   resources :posts
@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resources :courses
   resources :students
 
-  root to: 'static#index'
 
+  get '/courses/:id/follow', to: 'courses#follow'
+  get '/courses/:id/unfollow', to: 'courses#unfollow'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
